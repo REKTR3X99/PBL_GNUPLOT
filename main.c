@@ -1,20 +1,19 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include "Types.h"
 
-int MagneticField()
+
+int ElectricField()
 {
     char Type;
-    printf('\nEnter the type of magnetic field you want to simulate');
+    printf("\nEnter the type of electric field you want to simulate");
     scanf("%c",&Type);
 
-    switch(Type)
-    {
-
-    }
+    Perpendicular_ElectricField();
 
 }
 
-int ElectricField()
+int MagneticField()
 {
 
 }

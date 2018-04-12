@@ -6,9 +6,29 @@
 
 #IncludeRegexTransform: 
 
+/home/ajay/Desktop/PBL_GNU/Types.h
+stdio.h
+-
+math.h
+-
+stdlib.h
+-
+unistd.h
+-
+sys/types.h
+-
+fcntl.h
+-
+sys/stat.h
+-
+sys/wait.h
+-
+
 /home/ajay/Desktop/PBL_GNU/main.c
 stdio.h
 -
 stdlib.h
 -
+Types.h
+/home/ajay/Desktop/PBL_GNU/Types.h
 
