@@ -1,0 +1,4 @@
+/snap/clion/17/bin/cmake/bin/cmake -DCMAKE_BUILD_TYPE=Debug -G "CodeBlocks - Unix Makefiles" /home/ajay/Desktop/PBL_GNU
+-- Configuring done
+-- Generating done
+-- Build files have been written to: /home/ajay/Desktop/PBL_GNU/cmake-build-debug
