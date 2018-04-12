@@ -22,12 +22,50 @@ char * commandsForGnuplot[] = {"set title \"Plot\"", "plot 'PlotPoints.dat' usin
 #define E_ENERGY 1.6E-19
 
 
-int Parallel_ElectricField()
+double InitialVelocity;
+double StepSize;
+double TimeToSimulate;
+double PlateDistance;
+double PotentialDifference;
+double KeepTrackOfTime = 0;
+double Energy;
+double Acceleration;
+double Force;
+unsigned long long ElemCount = 0;
+unsigned long long count =  0;
+ssize_t buffer;
+FILE *fd;
+
+
+void GetValues()
 {
-    double velocity;
-    double Force;
-    double Potential;
-    double acceleration;
+    printf("\nEnter the Initial velocity");
+    scanf("%lf",&InitialVelocity);
+
+    printf("\nEnter the potential");
+    scanf("%lf",&PotentialDifference);
+
+    printf("\nEnter the plate distance");
+    scanf("%lf",&PlateDistance);
+
+    printf("\nEnter the time to simulate for");
+    scanf("%lf",&TimeToSimulate);
+
+    printf("\nEnter the step size");
+    scanf("%lf",&StepSize);
+}
+
+void BasicCompute()
+{
+    Energy = PotentialDifference/PlateDistance;
+    Force = E_ENERGY * Energy;
+    Acceleration = Force / E_MASS;
+    ElemCount = TimeToSimulate / StepSize;
+}
+
+void Parallel_ElectricField()
+{
+
 
 }
 
@@ -35,38 +73,13 @@ int Perpendicular_ElectricField()
 {
     double HorizontalDisplacement;
     double VerticalDispalcemment;
-    double InitialVelocity;
-    double StepSize;
-    double TimeToSimulate;
+
     double x0,y0;
-    double KeepTrackOfTime = 0;
-    double Potential;
-    double PlateDistance;
-    double Energy;
-    unsigned long long ElemCount = 0;
 
     double *XCord;
     double *YCord;
     unsigned long long count = 0;
-    FILE *fd;
 
-    printf("\nEnter the Initial velocity");
-    scanf("%lf",&InitialVelocity);
-
-    printf("\nEnter the time to simulate for");
-    scanf("%lf",&TimeToSimulate);
-
-    printf("\nEnter the step size");
-    scanf("%lf",&StepSize);
-
-    printf("\nEnter the potential");
-    scanf("%lf",&Potential);
-
-    printf("\nEnter the plate distance");
-    scanf("%lf",&PlateDistance);
-
-    Energy = Potential/PlateDistance;
-    ElemCount = TimeToSimulate / StepSize;
 
     XCord = (double *)calloc(ElemCount,sizeof(double));
     YCord = (double *)calloc(ElemCount,sizeof(double));
@@ -76,6 +89,7 @@ int Perpendicular_ElectricField()
     {
     HorizontalDisplacement = InitialVelocity * KeepTrackOfTime;
     VerticalDispalcemment  = (((E_ENERGY * Energy)/ (2 *E_MASS)) * (KeepTrackOfTime * KeepTrackOfTime));
+    printf("\n%g%g",HorizontalDisplacement,VerticalDispalcemment);
     XCord[count] = HorizontalDisplacement;
     YCord[count] = VerticalDispalcemment;
     count++;
@@ -84,7 +98,7 @@ int Perpendicular_ElectricField()
 
     fd = fopen("PlotPoints.dat", "w");
 
-    ssize_t buffer = sizeof(XCord) * 2;
+    buffer= sizeof(XCord) * 2;
 
     for(int i =0; i<ElemCount-1;i++)
     {
@@ -92,18 +106,57 @@ int Perpendicular_ElectricField()
         fprintf(fd, "\n");
 
     }
-    FILE *PlotPipe = popen("gnuplot", "w");
-
-    for(int i =0; i<5;i++)
-    {
-        fprintf(PlotPipe,"%s \n",commandsForGnuplot[i]);
-    }
 
     //system("p 'PlotPoints.dat' using 1:2");
 
+
+    fclose(fd);
 }
 
 void Projectile_Electric()
 {
-    
+    float ProjectionAngle;
+    double Vx0, Vy0;
+    double HorizontalDisplacement;
+    double VerticalDisplacement;
+    double *XCord;
+    double *YCord;
+
+    XCord = (double *)calloc(ElemCount,sizeof(double));
+    YCord = (double *)calloc(ElemCount,sizeof(double));
+
+    printf("\nEnter the projection Angle");
+    scanf("%f",&ProjectionAngle);
+
+    Vx0 = InitialVelocity * cos(ProjectionAngle);
+    Vy0 = InitialVelocity * sin(ProjectionAngle);
+
+    count = 0;
+    KeepTrackOfTime = 0;
+
+    while(KeepTrackOfTime <=TimeToSimulate)
+    {
+        HorizontalDisplacement = Vx0 * KeepTrackOfTime;
+        VerticalDisplacement = Vy0  * (0.5 * Acceleration * pow(KeepTrackOfTime, 2));
+        printf("\n%g%g",HorizontalDisplacement,VerticalDisplacement);
+        XCord[count] = HorizontalDisplacement;
+        YCord[count] = VerticalDisplacement;
+
+        KeepTrackOfTime+= StepSize;
+        count++;
+    }
+
+    fd = fopen("PlotPoints.dat", "w");
+
+    buffer= sizeof(XCord) * 2;
+
+    for(int i =0; i<ElemCount-1;i++)
+    {
+        fprintf(fd, "%lf %lf",XCord[i], YCord[i]);
+        fprintf(fd, "\n");
+
+    }
+
+    fclose(fd);
+
 }

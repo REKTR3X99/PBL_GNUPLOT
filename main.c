@@ -5,11 +5,28 @@
 
 int ElectricField()
 {
-    char Type;
+    char Type = 'p';
     printf("\nEnter the type of electric field you want to simulate");
-    scanf("%c",&Type);
+    scanf("%s", &Type);
 
-    Perpendicular_ElectricField();
+    switch(Type)
+    {
+        case 'p':
+        case 'P':
+            Parallel_ElectricField();
+            break;
+
+        case 'a':
+        case 'A':
+            Projectile_Electric();
+            break;
+
+        case 'r':
+        case 'R':
+            Perpendicular_ElectricField();
+            break;
+
+    }
 
 }
 
@@ -22,14 +39,16 @@ int MagneticField()
 
 int main()
 {
-    char FieldType;
+    char FieldType = 0;
 
-    repeat :
+    GetValues();
+    BasicCompute();
+
 
     printf("Enter the type of field your want");
     printf("\nM : Magnetic Field\nE:Electric Field");
 
-    scanf("%c", &FieldType);
+    scanf(" %c",&FieldType);
 
     switch(FieldType)
     {
@@ -41,13 +60,6 @@ int main()
         case 'E':
         case 'e':
             ElectricField();
-            break;
-
-
-        default :
-            printf("\nEnter proper values:");
-            goto repeat;
-
             break;
 
 
