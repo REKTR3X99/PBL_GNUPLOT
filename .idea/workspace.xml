@@ -13,16 +13,9 @@
   <component name="ChangeListManager">
     <list default="true" id="80da90ae-7f1a-407d-911a-d902df5a50bd" name="Default" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CMakeLists.txt" beforeDir="false" afterPath="$PROJECT_DIR$/CMakeLists.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Types.h" beforeDir="false" afterPath="$PROJECT_DIR$/Types.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/.plotscript.gp.swo" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/.plotscript.gp.swp" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/.plotscript.gp.swp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/PBL_GNU.dir/flags.make" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/PBL_GNU.dir/flags.make" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/PBL_GNU.dir/link.txt" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/PBL_GNU.dir/link.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/PBL_GNU.dir/main.c.o" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/PBL_GNU.dir/main.c.o" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/PBL_GNU" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/PBL_GNU" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/PlotPoints.dat" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/PlotPoints.dat" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/main.c" beforeDir="false" afterPath="$PROJECT_DIR$/main.c" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/cmake-build-debug/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -50,8 +43,8 @@
       <file leaf-file-name="Types.h" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/Types.h">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="368">
-              <caret line="161" column="1" lean-forward="true" selection-start-line="161" selection-start-column="1" selection-end-line="161" selection-end-column="1" />
+            <state relative-caret-position="124">
+              <caret line="140" column="31" selection-start-line="140" selection-start-column="31" selection-end-line="140" selection-end-column="31" />
               <folding>
                 <element signature="e#37#55#0" expanded="true" />
               </folding>
@@ -149,12 +142,12 @@
       <updated>1523550570443</updated>
       <workItem from="1523550572836" duration="6000" />
       <workItem from="1523550665903" duration="3494000" />
-      <workItem from="1523554218096" duration="6075000" />
+      <workItem from="1523554218096" duration="6562000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="9575000" />
+    <option name="totallyTimeSpent" value="10062000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1920" height="1080" extended-state="6" />
@@ -166,11 +159,11 @@
       <window_info anchor="bottom" id="CMake" order="7" weight="0.32977587" />
       <window_info anchor="bottom" id="Event Log" order="7" side_tool="true" />
       <window_info anchor="bottom" id="Version Control" order="7" />
-      <window_info anchor="bottom" id="Run" order="2" weight="0.33511207" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.33511207" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info anchor="bottom" id="Terminal" order="7" />
       <window_info id="Favorites" order="2" side_tool="true" />
-      <window_info active="true" anchor="bottom" id="Debug" order="3" visible="true" weight="0.3991462" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.3991462" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
@@ -245,8 +238,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/Types.h">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="368">
-          <caret line="161" column="1" lean-forward="true" selection-start-line="161" selection-start-column="1" selection-end-line="161" selection-end-column="1" />
+        <state relative-caret-position="124">
+          <caret line="140" column="31" selection-start-line="140" selection-start-column="31" selection-end-line="140" selection-end-column="31" />
           <folding>
             <element signature="e#37#55#0" expanded="true" />
           </folding>

@@ -10,7 +10,7 @@
 #include <sys/stat.h>
 #include <sys/wait.h>
 
-char * commandsForGnuplot[] = {"set title \"Plot\"", "plot 'PlotPoints.dat' using 1:2"};
+char * commandsForGnuplot[] = {"plot 'PlotPoints.dat' using 1:2"};
 
 #ifndef PBL_GNU_TYPES_H
 #define PBL_GNU_TYPES_H
@@ -35,6 +35,7 @@ unsigned long long ElemCount = 0;
 unsigned long long count =  0;
 ssize_t buffer;
 FILE *fd;
+
 
 
 void GetValues()
@@ -81,6 +82,8 @@ int Perpendicular_ElectricField()
     unsigned long long count = 0;
 
 
+    FILE *PlotPipe = popen("gnuplot -persistent", "w");
+
     XCord = (double *)calloc(ElemCount,sizeof(double));
     YCord = (double *)calloc(ElemCount,sizeof(double));
 
@@ -107,7 +110,11 @@ int Perpendicular_ElectricField()
 
     }
 
-    //system("p 'PlotPoints.dat' using 1:2");
+    for (int i=0; i < 1; i++)
+    {
+        fprintf(PlotPipe, "%s \n", commandsForGnuplot[i]); //Send commands to gnuplot one by one.
+    }
+
 
 
     fclose(fd);
@@ -125,11 +132,13 @@ void Projectile_Electric()
     XCord = (double *)calloc(ElemCount,sizeof(double));
     YCord = (double *)calloc(ElemCount,sizeof(double));
 
+    FILE *PlotPipe = popen("gnuplot -persistent", "w");
+
     printf("\nEnter the projection Angle");
     scanf("%f",&ProjectionAngle);
 
-    Vx0 = InitialVelocity * cos(ProjectionAngle);
-    Vy0 = InitialVelocity * sin(ProjectionAngle);
+    Vx0 = InitialVelocity * sin(ProjectionAngle);
+    Vy0 = InitialVelocity * cos(ProjectionAngle);
 
     count = 0;
     KeepTrackOfTime = 0;
@@ -157,6 +166,16 @@ void Projectile_Electric()
 
     }
 
+    for (int i=0; i < 1; i++)
+    {
+        fprintf(PlotPipe, "%s \n", commandsForGnuplot[i]); //Send commands to gnuplot one by one.
+    }
+
     fclose(fd);
+
+}
+
+void Trasnverse_Magnetic()
+{
 
 }
