@@ -66,8 +66,48 @@ void BasicCompute()
 
 void Parallel_ElectricField()
 {
+    double HorizontalComponent;
+    double VerticalComponent = 50;
+    double *XCord;
+    double *YCord;
+    unsigned long long cnt = 0;
+    XCord = (double *)calloc(ElemCount, sizeof(double));
 
+    FILE *PlotPipe = popen("gnuplot -persistent","w");
+    FILE *f;
 
+    fd = fopen("PlotPoints.dat", "w");
+
+    ElemCount = TimeToSimulate / StepSize;
+    KeepTrackOfTime = 0;
+    count  =0;
+
+    printf("\nElem Count : %d", ElemCount);
+    while(KeepTrackOfTime <=ElemCount)
+    {
+        HorizontalComponent = Force / (2 * E_MASS) * pow(KeepTrackOfTime,2);
+        XCord[count] = HorizontalComponent;
+        printf("\n%d : %g", count, XCord[count]);
+        count++;
+        KeepTrackOfTime += StepSize;
+
+        printf("  %f  %f",KeepTrackOfTime, StepSize);
+
+    }
+printf("\nValues entering");
+
+    for(unsigned long long i =0; i<ElemCount;i++)
+    {
+        fprintf(fd, " %lf %lf",XCord[i], XCord[i]);
+        fprintf(fd, "\n");
+    }
+
+    for(int i =0; i<1; i++)
+    {
+        fprintf(PlotPipe, "%s \n", commandsForGnuplot[i]);
+    }
+free(XCord);
+fclose(fd);
 }
 
 int Perpendicular_ElectricField()
@@ -75,7 +115,7 @@ int Perpendicular_ElectricField()
     double HorizontalDisplacement;
     double VerticalDispalcemment;
 
-    double x0,y0;
+    //double x0,y0;
 
     double *XCord;
     double *YCord;
@@ -101,21 +141,22 @@ int Perpendicular_ElectricField()
 
     fd = fopen("PlotPoints.dat", "w");
 
-    buffer= sizeof(XCord) * 2;
+    buffer= sizeof(XCord);
 
-    for(int i =0; i<ElemCount-1;i++)
+    for(unsigned long long int i =0; i<ElemCount-1;i++)
     {
         fprintf(fd, "%lf %lf",XCord[i], YCord[i]);
         fprintf(fd, "\n");
 
     }
 
-    for (int i=0; i < 1; i++)
+    for (unsigned long long int i=0; i < 1; i++)
     {
         fprintf(PlotPipe, "%s \n", commandsForGnuplot[i]); //Send commands to gnuplot one by one.
     }
 
-
+    free(XCord);
+    free(YCord);
 
     fclose(fd);
 }
@@ -129,8 +170,8 @@ void Projectile_Electric()
     double *XCord;
     double *YCord;
 
-    XCord = (double *)calloc(ElemCount,sizeof(double));
-    YCord = (double *)calloc(ElemCount,sizeof(double));
+    XCord = (double *)calloc(ElemCount*2,sizeof(double));
+    YCord = (double *)calloc(ElemCount*2,sizeof(double));
 
     FILE *PlotPipe = popen("gnuplot -persistent", "w");
 
@@ -165,17 +206,57 @@ void Projectile_Electric()
         fprintf(fd, "\n");
 
     }
-
     for (int i=0; i < 1; i++)
     {
         fprintf(PlotPipe, "%s \n", commandsForGnuplot[i]); //Send commands to gnuplot one by one.
     }
 
+    free(XCord);
+    free(YCord);
     fclose(fd);
 
 }
 
 void Trasnverse_Magnetic()
 {
+double radius;
+double MagneticForce;
+
+
+printf("Enter the Magnetic Force in teslas");
+scanf("%lf", &MagneticForce);
+radius = (E_MASS * InitialVelocity) / (E_ENERGY * MagneticForce);
+
+FILE *PlotPipe_Circle = popen("gnuplot --persistent", "w");
+
+
+
+sleep(2);
+
+
+
+}
+
+void Longitudinal_Magnetic()
+{
+
+    double *XCord;
+    double *YCord;
+    unsigned long long count = 0;
+
+    XCord = (double *)calloc(ElemCount, sizeof(double));
+    YCord = (double *)calloc(ElemCount,sizeof(double ));
+
+    fd = fopen("PlotPoints.dat", "w");
+    FILE *PlotPipe = popen("gnuplot -persistent", "w");
+
+    for(count =0; KeepTrackOfTime < ElemCount; count++) {
+        fprintf(fd, "%ld %ld \n", count, count / 2);
+        KeepTrackOfTime += StepSize;
+        printf("%lf", KeepTrackOfTime);
+        {
+            fprintf(PlotPipe, "%s \n", commandsForGnuplot[count]);
+        }
+    }
 
 }

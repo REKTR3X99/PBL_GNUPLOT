@@ -7,6 +7,7 @@ int ElectricField()
 {
     char Type = 'p';
     printf("\nEnter the type of electric field you want to simulate");
+    printf("\nP: Parallel Electric Field\nA : Projectile Electric Field\nR: Perpendicular Electric Field");
     scanf("%s", &Type);
 
     switch(Type)
@@ -32,7 +33,23 @@ int ElectricField()
 
 int MagneticField()
 {
+    char Type;
 
+    printf("\nEnter the type of field you want to try");
+    scanf(" %c",&Type);
+
+    switch(Type)
+    {
+        case 'T':
+        case 't':
+            Trasnverse_Magnetic();
+            break;
+
+        case 'L':
+        case 'l':
+            Longitudinal_Magnetic();
+            break;
+    }
 }
 
 
@@ -48,9 +65,9 @@ int main()
     printf("Enter the type of field your want");
     printf("\nM : Magnetic Field\nE:Electric Field");
 
-    scanf(" %c",&FieldType);
+    scanf(" %c", &FieldType);
 
-    switch(FieldType)
+    switch (FieldType)
     {
         case 'M':
         case 'm':
@@ -61,8 +78,7 @@ int main()
         case 'e':
             ElectricField();
             break;
-
-
     }
+    return 0;
 
 }

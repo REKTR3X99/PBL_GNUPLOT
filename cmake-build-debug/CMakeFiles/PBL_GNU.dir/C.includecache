@@ -6,7 +6,7 @@
 
 #IncludeRegexTransform: 
 
-/home/ajay/Desktop/PBL_GNU/Types.h
+/home/ajay/Desktop/PBL_GNUPLOT/Types.h
 stdio.h
 -
 math.h
@@ -24,11 +24,11 @@ sys/stat.h
 sys/wait.h
 -
 
-/home/ajay/Desktop/PBL_GNU/main.c
+/home/ajay/Desktop/PBL_GNUPLOT/main.c
 stdio.h
 -
 stdlib.h
 -
 Types.h
-/home/ajay/Desktop/PBL_GNU/Types.h
+/home/ajay/Desktop/PBL_GNUPLOT/Types.h
 
