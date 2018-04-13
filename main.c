@@ -36,6 +36,7 @@ int MagneticField()
     char Type;
 
     printf("\nEnter the type of field you want to try");
+    printf("\nT : Transverse Magnetic Field\nL : Longitudinal MAgnetic Field");
     scanf(" %c",&Type);
 
     switch(Type)
@@ -58,27 +59,29 @@ int main()
 {
     char FieldType = 0;
 
-    GetValues();
-    BasicCompute();
 
 
-    printf("Enter the type of field your want");
-    printf("\nM : Magnetic Field\nE:Electric Field");
+        GetValues();
+        BasicCompute();
 
-    scanf(" %c", &FieldType);
 
-    switch (FieldType)
-    {
-        case 'M':
-        case 'm':
-            MagneticField();
-            break;
+        printf("Enter the type of field your want");
+        printf("\nM : Magnetic Field\nE:Electric Field");
 
-        case 'E':
-        case 'e':
-            ElectricField();
-            break;
-    }
+        scanf(" %c", &FieldType);
+
+        switch (FieldType) {
+            case 'M':
+            case 'm':
+                MagneticField();
+                break;
+
+            case 'E':
+            case 'e':
+                ElectricField();
+                break;
+        }
+
     return 0;
 
 }
